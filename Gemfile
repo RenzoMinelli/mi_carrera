@@ -32,6 +32,7 @@ group :development do
   gem 'web-console', '~> 4.0'
   gem 'capistrano', '~> 3.10', require: false
   gem 'capistrano-rails', '~> 1.6', require: false
+  gem 'capistrano-rvm', '~> 0.1', require: false
 end
 
 group :test do
