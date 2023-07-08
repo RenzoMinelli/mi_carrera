@@ -83,5 +83,3 @@ test:
 production:
   <<: *default
   database: mi_carrera_production
-  username: mi_carrera
-  password: <%= ENV['MI_CARRERA_DATABASE_PASSWORD'] %>
