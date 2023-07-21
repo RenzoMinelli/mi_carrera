@@ -69,4 +69,11 @@ class SubjectTest < ActiveSupport::TestCase
 
     assert_equal [s1, s2, s3], Subject.ordered_by_category_and_name
   end
+
+  test "#current_semester_optionals returns subjects that are current semester optionals" do
+    s1 = create :subject, current_optional_subject: true
+    create :subject, current_optional_subject: false
+
+    assert_equal [s1], Subject.current_semester_optionals
+  end
 end
