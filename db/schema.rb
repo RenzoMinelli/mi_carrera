@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_17_141005) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_21_205649) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_141005) do
     t.string "eva_id"
     t.string "code"
     t.string "category", default: "optional"
+    t.boolean "current_optional_subject", default: false
     t.index ["code"], name: "index_subjects_on_code", unique: true
   end
 
