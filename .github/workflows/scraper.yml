@@ -11,6 +11,10 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
+    - name: Update libyaml to 0.2.5
+      run: |
+          wget http://mirrors.kernel.org/ubuntu/pool/main/liby/libyaml/libyaml-0-2_0.2.5-1_amd64.deb
+          sudo apt-get install ./libyaml-0-2_0.2.5-1_amd64.deb
     - name: Run scraper
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
