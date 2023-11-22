@@ -15,10 +15,16 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
-        bundle exec rake scraper
-        git config --global user.email "micarrera@cedarcode.com"
-        git config --global user.name "MiCarrera"
-        git add db/data
-        git commit -m 'Scraper'
-        git push -f origin HEAD:scraper
-        gh pr create --title "Scraper" --body "Scraper updates" --head scraper
+          bundle exec rake scraper
+          git config --global user.email "micarrera@cedarcode.com"
+          git config --global user.name "MiCarrera"
+          git add db/data
+          CHANGED_FILES=$(git status --porcelain | grep -v '^??')
+          if [ -n "$CHANGED_FILES" ]; then
+            git commit -m 'Update db/data from scraper'
+            git push -f origin HEAD:scraper
+
+            gh pr create --title "Scraper Updates" --body "Updates from scraper" --head scraper
+          else
+            echo "No changes detected"
+          fi
